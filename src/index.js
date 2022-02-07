@@ -33,29 +33,35 @@ module.exports = function toReadable(number) {
     let tens = number % 100;
     let hundreds = Math.trunc(number / 100);
     let units = number % 10;
-    
+
     if (number < 21) {
         return numberObj[number];
     }
-    
+
     if (number > 20 && number < 100) {
         if (units === 0) {
-            return numberObj[number]
+            return numberObj[number];
         } else {
-            return numberObj[number - units] + ' ' + numberObj[units];
+            return numberObj[number - units] + " " + numberObj[units];
         }
-    };
+    }
 
     if (number > 99) {
-        if(tens === 0 && units === 0) {
+        if (tens === 0 && units === 0) {
             return numberObj[hundreds] + " hundred";
         }
         if (tens < 21) {
-            return numberObj[hundreds] + ' hundred ' + numberObj[tens];
+            return numberObj[hundreds] + " hundred " + numberObj[tens];
         } else if (units === 0) {
-            return numberObj[hundreds] + ' hundred ' + numberObj[tens];
+            return numberObj[hundreds] + " hundred " + numberObj[tens];
         } else {
-            return numberObj[hundreds] + ' hundred ' + numberObj[tens - units] + ' ' + numberObj[units];
+            return (
+                numberObj[hundreds] +
+                " hundred " +
+                numberObj[tens - units] +
+                " " +
+                numberObj[units]
+            );
         }
     }
 };
